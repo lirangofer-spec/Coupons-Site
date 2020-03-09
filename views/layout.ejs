@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+  <head>
+    <!-- <link rel='stylesheet' href='/public/stylesheets/style.css' > -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <style>
+      /* Remove the navbar's default margin-bottom and rounded borders */ 
+      .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+      
+      /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+      
+      
+      /* Set black background color, white text and some padding */
+      
+      
+      /* On small screens, set height to 'auto' for sidenav and grid */
+      @media screen and (max-width: 767px) {
+        .sidenav {
+          height: auto;
+          padding: 15px;
+        }
+        .row.content {height:auto;} 
+      }
+
+      footer {
+        background-color: #767676;
+        color: white;
+        padding: 15px;
+      }
+    </style>
+
+		
+<body>
+<nav class="navbar navbar-inverse" >
+  <div class="container-fluid"  >
+    <div class="navbar-header" >
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar" >
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="/add">Add Coupon<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="add/addcoupon">Add Coupon</a></li>
+            <li><a href="add/uploadcouponimage">Upload Coupon</a></li>
+            <li><a href="add/editcoupon">Edit Coupon</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" >Get Coupons<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="get/getcouponsjson">Get Coupons as JSON</a></li>
+              <li><a href="get/getcouponstable">Get Coupons as Table</a></li>
+              <li><a href="get/getcouponscsv">Get Coupons as CSV</a></li>
+            </ul>
+          </li>
+        <li><a href="/get/couponstomail">Send Coupons to mail</a></li>
+        <li><a href="/token">Get token</a></li>
+        <li><a href="/about">About</a></li>
+        
+      <ul class="nav navbar-nav navbar-right">
+          <% if (user) { %>
+
+            <p><font color="white">Nice to see you: <%= user.email %></font>
+                <button type="button" class="btn btn-default btn-sm">
+                  <span class="glyphicon glyphicon-log-out"></span>
+                  <form action="/sessions/logout" method="POST">
+                    <input type="submit" value="Logout" class="glyphicon glyphicon-log-out"/>
+                    </form>
+                </button>
+            </p>
+
+          <% } else { %>
+            <li><a href='/users'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href='/sessions/'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>   
+          <% } %> 
+
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+
+    <div class="container-fluid text-left"> 
+      <h1>Welcome</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 			 commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 		   aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <hr>
+      <h3>Test</h3>
+      <p>Lorem ipsum...</p>
+      <%- include(page); %>
+    </div>
+</div>
+
+
+
+
+<footer class="container-fluid text-center">
+    <p>This is footer section of <% title %> page </p>
+    <p>Posted by: Liran Gofer</p>
+    <p>Contact information: <a href="mailto:someone@example.com">
+    someone@example.com</a>.</p>
+</footer>
+    
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <h2>Welcome to <%= title %> project</h2>
+    <p>To add coupon click <a href="/add">here</a></p>
+    <p>Present coupons name as image/slide/directory click <a href="/presentcoupons">here</a></p>
+    <div class="btn-group btn-group-sm" > <p>To get Coupons as</p>
+      <button type="button" class="btn btn-primary" onclick="location.href = 'get/getcouponsjson';" >JSON </button>
+      <button type="button" class="btn btn-primary" onclick="location.href = 'get/getcouponstable';" >Table </button>
+      <button type="button" class="btn btn-primary" onclick="location.href = 'get/getcouponscsv';" >CSV </button>
+    </div>
+    <p>To get Coupons as <a href="get/getcouponsjson" >JSON</a>/<a href="get/getcouponstable" >table</a>/<a href="get/getcouponscsv" >CSV</a></p>
+    <p>To get specific Coupons as <a href="/specificcouponjson" >JSON</a>/<a href="/specificcoupontable" >table</a>/<a href="/specificcouponcsv" >CSV</a></p>
+    <p>To get Coupons to your mail click <a href="/get/couponstomail" >here</a></p>
+    <p>To get token click <a href="/token">here</a></p>
+    <p>To about page click <a href="/about">here</a></p>
+    
+    
+  </body>
+</html>
+

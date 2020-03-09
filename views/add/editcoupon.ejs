@@ -1,0 +1,30 @@
+<h1>Edit <%= title %></h1>
+<h2>Welcome to edit <%= title %> page</h2>
+<form action = "<%= action %>" method ="post" />
+    Coupon Name: <input type ="text" name ="name" placeholder="Enter coupon name" value="<%= item.name %>" required autofocus/>
+    </br>
+    Coupon id: <input type ="text" name ="id" placeholder="Enter coupon id" value = "<%= item.id %>" required autofocus/>
+    </br>
+    Dynamic Business Type (from server):
+    <select name ="businessType" value="<%= item.businessType %>" required autofocus>
+    <option>car</option>
+    </select>
+    </br>
+    Coupon Category:
+    <select name="category"  value="<%= item.category %>" required autofocus>
+        <option>Resturant</option>
+        <option>Education</option>
+        <option>Attraction</option>
+        <option>Vacation</option>
+    </select>
+    </br>
+    <!-- <input type ="text" name ="imagefilename" placeholder="Enter image name"  value="<%= item.name %>" required autofocus/> -->
+    </br>
+    Type a description: <input type ="text" name ="description" placeholder="Type a description"  value="<%= item.description %>" required autofocus/>
+    </br>
+    <input type = "submit" >
+    </form>
+
+
+
+    

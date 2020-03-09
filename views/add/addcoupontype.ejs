@@ -1,0 +1,23 @@
+<%
+function getBusinessTypeAndPrint() {
+
+    const business_type = document.getElementById('business_type');
+    
+    
+    
+    const serverres = '{"1":"brand", "2":"unbrand", "3":"resturant", "4":"clean"}';
+    let obj = JSON.parse(serverres);
+    obj = Object.keys(obj).map(function(_) { return obj[_]; })
+    
+        for (let item of obj) {
+            //res += item;
+           console.log(item);
+           //business_type.option.innerHTML = item;
+           console.log('here');
+           business_type.innerHTML+='<option>'+item+'</option>';
+                  
+        }
+    }
+    
+getBusinessTypeAndPrint();
+%>

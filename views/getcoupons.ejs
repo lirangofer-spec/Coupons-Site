@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>   
+<html lang="en"></html>
+<html>   
+  
+<head>  
+<h1> Get <%= title %> </h1>
+<h2> <%= title %> JSON/table/CSV </h2>
+Result in <%= presentment %> style
+</br>
+</br>
+
+<button id = 'previous' type="button">Previous</button> <button id = 'next' type="button">Next</button>
+
+</br>
+</br>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+</style>
+      
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+ 
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    ul, li, a 
+        { display:block; }
+
+</style>
+  
+  
+    <!--  <table id="table" align = "center" border="1px"></table> -->
+      
+
+<div class="container">
+     <div class="table-responsive">
+        <table class = "table-bordered" id="table">
+        
+        </table>
+      </div>
+</div>     
+
+
+
+    <script>  
+
+        var list = <%- JSON.stringify(coupon) %> ;
+            var cols = []; 
+              
+            for (var i = 0; i < list.length; i++) { 
+                for (var k in list[i]) { 
+                    if (cols.indexOf(k) === -1) { 
+                          
+                        // Push all keys to the array 
+                        cols.push(k); 
+                    } 
+                } 
+            } 
+            //var div = document.createElement("div").setAttribute('id', 'div');  
+            // Create a table element 
+            //document.createElement("div").setAttribute('class', 'container');
+            //document.createElement("div").setAttribute('class', 'table-responsive');
+            //document.createElement('table').setAttribute('class', 'table');
+            
+            // Create table row tr element of a table 
+            //var tr = table.insertRow(-1);   
+            var tr = document.getElementById('table').insertRow(-1); 
+            for (var i = 0; i < cols.length; i++) { 
+                  
+                // Create the table header th element 
+                var theader = document.createElement("th"); 
+                theader.innerHTML = cols[i]; 
+                  
+                // Append columnName to the table row 
+                tr.appendChild(theader); 
+            } 
+              
+            // Adding the data to the table 
+            for (var i = 0; i < list.length; i++) { 
+                  
+                // Create a new row 
+                trow = document.getElementById('table').insertRow(-1); 
+                for (var j = 0; j < cols.length; j++) { 
+                    var cell = trow.insertCell(-1); 
+                      
+                    // Inserting the cell at particular place 
+                    cell.innerHTML = list[i][cols[j]];
+                    if (cell.innerHTML=='[object Object]') {
+                    //cell.innerHTML = <a href='http://localhost:3000/get/img/?id=30'> </a>;
+                    //var cell = document.createElement('a');
+                    //var linkText = document.createTextNode("http://localhost:3000/get/img/?id=30");
+                    //cell.appendChild(linkText);
+                    cell.href = "http://localhost:3000/get/img/?id=30";
+                    //document.body.appendChild(cell);
+                   
+                    console.log('There is an image');
+                   }
+                }
+                     
+            } 
+           // } 
+            console.log('Here22222222222');  
+            // Add the newely created table containing json data 
+            /* 
+            var el = document.getElementById("table"); 
+            el.innerHTML = ""; 
+            el.appendChild(table); 
+            */
+            // Next and previous buttons
+            
+            var counter = <%= pagecounter %>;
+            var next = document.getElementById('next');
+            var previous = document.getElementById('previous');
+            var initial = 1;
+            $("#next").on("click", function() {
+                if (0<initial<=counter ) {
+                    $("#table").load("http://localhost:3000/get/getcouponstable/?page="+Number(initial+1));  
+                    initial++;
+                } else {
+                    document.getElementById("next").style.visibility = "hidden";
+                }
+            });
+
+            $("#previous").on("click", function() {
+                if (0<initial<=counter ) {
+                    $("#table").load("http://localhost:3000/get/getcouponstable/?page="+Number(initial-1));   
+                    initial--;  
+                } else {
+                    document.getElementById("previous").style.visibility = "hidden";
+
+                }
+            });
+
+    </script> 
+
+urls:
+<ul class="pagination" style = "ul li a { display:block; }" >
+<% for (let i=1; i <= paginate.totalPages; i++) { %>
+<!-- <li class="list-group-item" <a href = "<%= paginate.url(i) %>" </a> <%= i %> </li> -->
+<!-- <li class="list-group-item" <a href = "www.google.com" </a> <%= i %> </li> -->
+    <li>
+        <a class = "list-group-item" href="<%= paginate.url(i) %>" ><%= i %></a>
+    </li>
+
+<% } %>
+</ul>
+<script>
+
+    $(document).ready(function() { 
+        $('a.list-group-item').click(function() {
+            //if ($('li.list-group-item.active') != 'undefined') {
+                $('a.list-group-item.active').removeClass("active");     
+            //} 
+            $(this).addClass("active"); 
+        }); 
+    }); 
+
+</script>
+
+
+</body>   
+  
+</html> 
